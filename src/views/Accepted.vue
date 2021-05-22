@@ -5,8 +5,7 @@
     </el-header>
     <el-main>
       <el-card>
-        <h1>欢迎来到用户贷后画像平台！</h1>
-        <p>请点击导航栏<span>标签</span>进行对应画像查看</p>
+        <h1>Accepted</h1>
       </el-card>
     </el-main>
   </div>

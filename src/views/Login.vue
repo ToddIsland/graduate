@@ -2,27 +2,48 @@
   <div class="back">
     <div class="login">
       <h2>登录</h2>
-      <div class="con">
-        <div class="word">用户名</div>
-        <el-input v-model="name"></el-input>
-        <div class="word">密码</div>
-        <el-input v-model="password"></el-input>
-      </div>
-      <div class="btn">
-        <el-button type="primary">登录</el-button>
-        <el-button>注册</el-button>
-      </div>
+      <el-form
+        :model="loginForm"
+        ref="loginForm"
+        class="login-Form"
+        label-width="85px"
+      >
+        <el-form-item label="账号">
+          <el-input v-model="loginForm.name"></el-input>
+        </el-form-item>
+        <el-form-item label="密码">
+          <el-input v-model="loginForm.pass" type="password"></el-input>
+        </el-form-item>
+        <el-button type="primary" @click="doLogin()">登录</el-button>
+        <el-button @click="jumpRegister()">注册</el-button>
+      </el-form>
     </div>
   </div>
 </template>
 <script>
 export default {
-    data(){
-        return {
-            name:'',
-            password:''
-        }
-    }
+  data() {
+    return {
+      name: "",
+      password: "",
+      loginForm: {
+        name: "",
+        pass: "",
+      },
+    };
+  },
+  methods: {
+    doLogin: function () {
+      this.$message({
+        message:'登录成功！',
+        type:'success'
+      })
+      this.$router.push('/home');
+    },
+    jumpRegister: function () {
+      this.$router.push("/register");
+    },
+  },
 };
 </script>
 
@@ -44,36 +65,17 @@ export default {
   left: 70%;
   top: 40%;
   transform: translate(-50%, -50%);
-  height: 230px;
-  width: 300px;
+  height: 260px;
+  width: 320px;
   /* opacity: 0.2; */
   background-color: white;
   border-radius: 4px;
   box-shadow: 10px 5px 5px black;
 }
-.con {
-  display: grid;
-  grid-template-columns: 80px 280px;
-}
-.word {
-  text-align: center;
-  align-self: center;
-}
 body {
   overflow: hidden;
 }
 .el-input {
-  margin-top: 5px;
-  margin-left: 20px;
-  width: 200px;
-  position: relative;
-  right: 15px;
-}
-.btn{
-    display: flex;
-    justify-content: center;
-}
-.el-button {
-  margin-top: 10px;
+  width: 210px;
 }
 </style>
