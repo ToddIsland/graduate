@@ -14,8 +14,11 @@
       <el-menu-item index="rejected">Rejected</el-menu-item>
       <el-menu-item index="others">Others</el-menu-item>
       <el-menu-item index="manage" v-show="isManage">Manage</el-menu-item>
-      <el-menu-item style="float: right">
-        <el-dropdown>
+
+      <el-menu-item style="margin-left: 400px">
+        <el-input placeholder="请输入搜索id..." size="small" style="width:200px"></el-input
+        ><el-button icon="el-icon-search" round size="small" style="margin:0 110px 0 15px"></el-button
+        ><el-dropdown>
           <span class="drop-link">
             Hello, {{ username }}
             <i class="el-icon-arrow-down"></i>
@@ -31,22 +34,18 @@
         </el-dropdown>
       </el-menu-item>
     </el-menu>
-    <el-drawer
-      title="修改信息"
-      :visible.sync="drawer"
-      :direction="direction"
-    >
-        <el-form ref="form">
-            <el-form-item label="昵称">
-                <el-input v-model="username"></el-input>
-            </el-form-item>
-            <el-form-item label="修改密码">
-                <el-input v-model="password" type="password"></el-input>
-            </el-form-item>
-            <el-form-item label="确认密码">
-                <el-input v-model="password2" type="password"></el-input>
-            </el-form-item>
-        </el-form>
+    <el-drawer title="修改信息" :visible.sync="drawer" :direction="direction">
+      <el-form ref="form">
+        <el-form-item label="昵称">
+          <el-input v-model="username"></el-input>
+        </el-form-item>
+        <el-form-item label="修改密码">
+          <el-input v-model="password" type="password"></el-input>
+        </el-form-item>
+        <el-form-item label="确认密码">
+          <el-input v-model="password2" type="password"></el-input>
+        </el-form-item>
+      </el-form>
     </el-drawer>
   </div>
 </template>
@@ -55,12 +54,12 @@ export default {
   name: "navbar",
   data() {
     return {
-      isManage: false,
+      isManage: true,
       username: "Todd",
-      drawer:false,
-      direction:'rtl',
-      password:'',
-      password2:'',
+      drawer: false,
+      direction: "rtl",
+      password: "",
+      password2: "",
     };
   },
   methods: {
@@ -88,7 +87,7 @@ export default {
   color: #dcdfe6;
   cursor: pointer;
 }
-.el-form{
-    margin:20px;
+.el-form {
+  margin: 20px;
 }
 </style>
