@@ -16,8 +16,8 @@
       <el-menu-item index="manage" v-show="isManage">Manage</el-menu-item>
 
       <el-menu-item style="margin-left: 400px">
-        <el-input placeholder="请输入搜索id..." size="small" style="width:200px"></el-input
-        ><el-button icon="el-icon-search" round size="small" style="margin:0 110px 0 15px"></el-button
+        <el-input placeholder="请输入搜索id..." size="small" style="width:200px" v-model="inputcontent"></el-input
+        ><el-button icon="el-icon-search" round size="small" style="margin:0 110px 0 15px" @click="searchid"></el-button
         ><el-dropdown>
           <span class="drop-link">
             Hello, {{ username }}
@@ -46,6 +46,7 @@
           <el-input v-model="password2" type="password"></el-input>
         </el-form-item>
       </el-form>
+      <el-button type="primary" @click="alterinfo">确认修改</el-button>
     </el-drawer>
   </div>
 </template>
@@ -60,6 +61,7 @@ export default {
       direction: "rtl",
       password: "",
       password2: "",
+      inputcontent:''
     };
   },
   methods: {
@@ -71,6 +73,20 @@ export default {
       });
       console.log("a");
     },
+    searchid:function(){
+        this.$router.push('/search');
+        this.$message({
+          message:'搜索成功！',
+          type:'success'
+        });
+    },
+    alterinfo:function(){
+      this.$router.push('/');
+      this.$message({
+        message:'修改成功，请重新登录！',
+        type:'success'
+      })
+    }
   },
 };
 </script>
